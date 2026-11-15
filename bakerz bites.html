@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Bakerz Bite — bakery and café in Karachi. Artisan pastries, gourmet cakes, cookies, pies and handcrafted beverages. Where smiles are served daily.">
+  <title>Bakerz Bite | Where smiles are served daily</title>
+  <link rel="icon" type="image/svg+xml" href="images/logo.svg">
+
+  <!-- Fonts (Google Fonts; the site falls back to system fonts when offline) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ 
+  <!-- Preloader styles (inline so the loader shows instantly, before the main CSS loads) -->
+  <style>
+    #preloader {
+      position: fixed; inset: 0; z-index: 3000;
+      display: flex; align-items: center; justify-content: center;
+      background: #FFFBF7;
+      transition: opacity .5s ease, visibility .5s ease;
+    }
+    #preloader.done { opacity: 0; visibility: hidden; }
+    .pl-inner { text-align: center; padding: 20px; }
+    .pl-ring { position: relative; width: 108px; height: 108px; margin: 0 auto 18px; display: flex; align-items: center; justify-content: center; }
+    .pl-ring::before {
+      content: ""; position: absolute; inset: 0; border-radius: 50%;
+      border: 5px solid #F9D5E5; border-top-color: #B0315C; border-right-color: #FFF3B0;
+      animation: plSpin 1s linear infinite;
+    }
+    .pl-ring img { width: 64px; height: 64px; border-radius: 50%; background: #fff; box-shadow: 0 6px 18px rgba(176, 49, 92, .2); animation: plBounce 1.4s ease-in-out infinite; }
+    .pl-text { margin: 0; font-family: 'Pacifico', 'Brush Script MT', cursive; font-size: 1.9rem; color: #4B2340; line-height: 1.2; }
+    .pl-sub { margin: 6px 0 0; font-family: 'Nunito', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; font-size: .95rem; font-weight: 700; color: #6E4A63; letter-spacing: .5px; }
+    .pl-dots span { display: inline-block; animation: plDot 1.2s infinite; }
+    .pl-dots span:nth-child(2) { animation-delay: .2s; }
+    .pl-dots span:nth-child(3) { animation-delay: .4s; }
+    @keyframes plSpin { to { transform: rotate(360deg); } }
+    @keyframes plBounce { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+    @keyframes plDot { 0%, 80%, 100% { opacity: .2; } 40% { opacity: 1; } }
+    @media (prefers-reduced-motion: reduce) {
+      .pl-ring::before { animation-duration: 2.5s; }
+      .pl-ring img, .pl-dots span { animation: none; }
+    }
+  </style>
+  <noscript><style>#preloader { display: none !important; }</style></noscript>
+
+  <!-- Bootstrap 5 from CDN, with a local copy as fallback when offline -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        onerror="this.onerror=null;this.href='vendor/bootstrap/bootstrap.min.css';">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ============ PRELOADER ============ -->
+<div id="preloader" role="status" aria-label="Loading Bakerz Bite">
+  <div class="pl-inner">
+    <div class="pl-ring"><img src="logo.jpg" alt="Bakerz Bite" width="65" height="65" style="object-fit: cover; transform: scale(1.1);"></div>
+    <p class="pl-text">Bakerz Bite</p>
+    <p class="pl-sub">Baking something sweet<span class="pl-dots"><span>.</span><span>.</span><span>.</span></span></p>
+  </div>
+</div>
+<script>
+/* Hide the preloader once the page has fully loaded (shown at least 0.7s, never stuck more than 6s) */
+(function () {
+  var pl = document.getElementById('preloader');
+  if (!pl) return;
+  var start = Date.now(), hidden = false;
+  function hide() {
+    if (hidden) return;
+    hidden = true;
+    var wait = Math.max(0, 700 - (Date.now() - start));
+    setTimeout(function () {
+      pl.classList.add('done');
+      setTimeout(function () { if (pl.parentNode) pl.parentNode.removeChild(pl); }, 700);
+    }, wait);
+  }
+  if (document.readyState === 'complete') hide();
+  else window.addEventListener('load', hide);
+  setTimeout(hide, 6000);
+})();
+</script>
+
+<!-- ============ SHARED HERO VIDEO ============
+     Ye ek hi video hai. Neeche wali script ise har page ke hero mein le jati hai.
+     Tip: file ka naam "cake-vid.mp4" rakh kar images/ folder mein daalo (space wala naam bhi chalega). -->
+<div id="videoHolder" hidden>
+  <video id="heroVideo" class="hero-video" autoplay muted loop playsinline preload="auto" aria-hidden="true" tabindex="-1">
+    <source src="images/cake-vid.mp4" type="video/mp4">
+    <source src="images/cake%20vid.mp4" type="video/mp4">
+    <source src="cake-vid.mp4" type="video/mp4">
+    <source src="cake%20vid.mp4" type="video/mp4">
+  </video>
+</div>
+
+<a class="skip-link" href="#app">Skip to main content</a>
+
+<!-- ============ TOP BAR ============ -->
+<div class="topbar">
+  <div class="container d-flex align-items-center justify-content-between gap-3">
+    <p class="topbar-motto mb-0"><span class="d-none d-sm-inline">Bakery &amp; Café · </span><em>Where smiles are served daily.</em></p>
+    <div class="visitor" title="Number of visits to this website from this browser">
+      <img src="logo.jpg" alt="" width="60" height="60" class="rounded-circle">
+      <span class="visitor-label">Visitors</span>
+      <span class="visitor-count" id="visitorCount">0</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ NAVBAR ============ -->
+<header class="site-header sticky-top">
+  <nav class="navbar navbar-expand-lg" aria-label="Main navigation">
+    <div class="container">
+      <a class="navbar-brand" href="#home" data-page="home">
+       <img src="logo.jpg" alt="Bakerz Bite" width="65" height="65" style="object-fit: cover; transform: scale(1.1);">
+        <span class="brand-name">Bakerz Bite</span>
+      </a>
+
+      <div class="d-flex align-items-center gap-2 order-lg-3">
+        <button class="btn btn-cart" type="button" data-bs-toggle="offcanvas" data-bs-target="#cartPanel" aria-controls="cartPanel">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6h15l-1.5 9h-12z"/><path d="M6 6L5 3H2"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></svg>
+          <span class="d-none d-sm-inline">Cart</span>
+          <span class="badge rounded-pill cart-badge" id="cartCount">0</span>
+        </button>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="toggler-bar"></span><span class="toggler-bar"></span><span class="toggler-bar"></span>
+        </button>
+      </div>
+
+      <div class="collapse navbar-collapse order-lg-2" id="mainNav">
+        <ul class="navbar-nav mx-auto main-menu">
+          <li class="nav-item"><a class="nav-link" href="#home" data-page="home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#menu" data-page="menu">Menu</a></li>
+          <li class="nav-item"><a class="nav-link" href="#offers" data-page="offers">Offers</a></li>
+          <li class="nav-item"><a class="nav-link" href="#merchandise" data-page="merchandise">Merchandise</a></li>
+          <li class="nav-item"><a class="nav-link" href="#gallery" data-page="gallery">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about" data-page="about">About Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact" data-page="contact">Contact Us</a></li>
+          <li class="nav-item more-menu">
+            <button type="button" class="nav-link more-toggle" id="moreToggle" aria-expanded="false" aria-controls="moreMenu">
+              More
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <ul class="more-dropdown" id="moreMenu">
+              <li><a class="nav-link" href="#feedback" data-page="feedback">Feedback &amp; Ratings</a></li>
+              <li><a class="nav-link" href="#faq" data-page="faq">FAQ</a></li>
+              <li><a class="nav-link" href="#sitemap" data-page="sitemap">Site Map</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main id="app" tabindex="-1">
+
+  <!-- =================================== HOME =================================== -->
+  <section class="page" id="page-home" data-title="Home">
+
+    <!-- Hero (video yahan script se aati hai) -->
+    <div id="homeBanner" class="banner" aria-label="Welcome to Bakerz Bite">
+      <div class="banner-caption">
+        <h1>Freshly baked, made to make you smile</h1>
+        <p>Cakes, pastries and cookies baked every morning with real butter and fresh cream.</p>
+        <div class="d-flex flex-wrap justify-content-center gap-2">
+          <a href="#menu" class="btn btn-rose btn-lg">Explore our menu</a>
+          <a href="#offers" class="btn btn-glass btn-lg">See offers</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Motto: ab floating card, upar neeche space ke saath -->
+    <div class="motto-section">
+      <div class="container">
+        <div class="motto-band">
+          <p class="motto">Where smiles are served daily.</p>
+          <div class="row g-4 promise-row">
+            <div class="col-md-4">
+              <div class="promise">
+                <strong>Baked fresh every day</strong>
+                <span>Over 300 kinds of baked goods, made in-store each morning.</span>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="promise">
+                <strong>Real ingredients only</strong>
+                <span>Real butter, fresh cream and unbleached flour.</span>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="promise">
+                <strong>Like family</strong>
+                <span>We never use anything we would not feed our own.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container section">
+      <div class="section-head">
+        <div><p class="kicker">Explore</p><h2>Shop by Category</h2></div>
+        <a href="#menu" class="link-more">View full menu →</a>
+      </div>
+      <div class="row g-3" id="homeCategories"></div>
+    </div>
+
+    <div class="section section-pink">
+      <div class="container">
+        <div class="section-head">
+          <div><p class="kicker">Most loved</p><h2>Our Best Sellers</h2></div>
+          <a href="#menu" class="link-more">See all items →</a>
+        </div>
+        <div class="row g-4" id="homeBestsellers"></div>
+      </div>
+    </div>
+
+    <!-- Current Offers -->
+    <div class="container section">
+      <div class="section-head">
+        <div><p class="kicker">Save more</p><h2>Current Offers</h2></div>
+        <a href="#offers" class="link-more">All offers →</a>
+      </div>
+      <div class="row g-4" id="homeOffers"></div>
+    </div>
+
+    <!-- Custom cake orders -->
+    <div class="section custom-section">
+      <div class="container">
+        <div class="row g-5 align-items-center">
+
+          <div class="col-lg-6">
+            <div class="custom-visual text-center">
+              <img src="https://betterbunslive.com/storage/260/conversions/ba456e9e-fa54-4e89-a12b-3f187ef3a148-medium.png"
+                   onerror="this.onerror=null;this.src='images/banners/custom-cake.jpg';"
+                   alt="Custom cake" class="img-fluid rounded-4 shadow-soft">
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="custom-copy">
+              <p class="kicker">Custom orders</p>
+              <h2>Your dream cake in 3 easy steps</h2>
+              <p class="custom-lead">Tell us your idea and we will bake it fresh for your special day.</p>
+
+              <ol class="step-list">
+                <li class="step-item">
+                  <span class="step-num">Step 1</span>
+                  <div class="step-content">
+                    <h4 class="step-title">Choose</h4>
+                    <p class="step-desc">Choose a size, flavour and design — or send us a picture.</p>
+                  </div>
+                </li>
+                <li class="step-item">
+                  <span class="step-num">Step 2</span>
+                  <div class="step-content">
+                    <h4 class="step-title">Confirm</h4>
+                    <p class="step-desc">Confirm the price and date with us on <span class="wa-here"></span>.</p>
+                  </div>
+                </li>
+                <li class="step-item">
+                  <span class="step-num">Step 3</span>
+                  <div class="step-content">
+                    <h4 class="step-title">Pick Up or Delivery</h4>
+                    <p class="step-desc">Pick it up fresh or get it delivered.</p>
+                  </div>
+                </li>
+              </ol>
+
+              <a class="btn btn-rose btn-lg" id="customCakeBtn" href="#" target="_blank" rel="noopener">Start my custom order</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container section">
+      <div class="section-head">
+        <div><p class="kicker">Reviews</p><h2>What our customers say</h2></div>
+        <a href="#feedback" class="link-more">Write a review →</a>
+      </div>
+      <div class="row g-4" id="homeReviews"></div>
+    </div>
+
+    <div class="section section-mint">
+      <div class="container">
+        <div class="section-head">
+          <div><p class="kicker">Take a bite home</p><h2>Bakerz Bite Merchandise</h2></div>
+          <a href="#merchandise" class="link-more">Shop merchandise →</a>
+        </div>
+        <div class="row g-4" id="homeMerch"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================================== MENU =================================== -->
+  <section class="page" id="page-menu" data-title="Menu">
+    <div class="page-hero">
+      <div class="container">
+        <h1>Our Menu</h1>
+        <p>Artisan pastries, gourmet cakes and desserts, and handcrafted beverages. Click any item to see photos, ingredients and details.</p>
+      </div>
+    </div>
+    <div class="container section pt-4">
+      <div class="row g-4">
+        <aside class="col-lg-3" aria-label="Product filters">
+          <button class="btn btn-outline-rose w-100 d-lg-none mb-3" type="button" id="filterToggle" aria-expanded="false" aria-controls="filterPanel">Show filters</button>
+          <form class="filter-card" id="filterPanel" autocomplete="off">
+            <div class="filter-block">
+              <label for="fSearch" class="filter-title">Search</label>
+              <input type="search" class="form-control" id="fSearch" placeholder="e.g. chocolate, croissant">
+            </div>
+            <fieldset class="filter-block">
+              <legend class="filter-title">Category</legend>
+              <div id="fCategories"></div>
+            </fieldset>
+            <div class="filter-block">
+              <label for="fPrice" class="filter-title d-flex justify-content-between"><span>Max price</span><span id="fPriceLabel"></span></label>
+              <input type="range" class="form-range" id="fPrice" min="100" step="50">
+            </div>
+            <fieldset class="filter-block">
+              <legend class="filter-title">Dietary</legend>
+              <div id="fDietary"></div>
+            </fieldset>
+            <fieldset class="filter-block">
+              <legend class="filter-title">Show only</legend>
+              <div id="fTags"></div>
+            </fieldset>
+            <button type="reset" class="btn btn-outline-rose w-100" id="fReset">Reset filters</button>
+          </form>
+        </aside>
+        <div class="col-lg-9">
+          <div class="results-bar">
+            <p class="mb-0" id="resultCount" aria-live="polite"></p>
+            <div class="d-flex align-items-center gap-2">
+              <label for="fSort" class="small fw-bold text-nowrap">Sort by</label>
+              <select class="form-select form-select-sm" id="fSort">
+                <option value="featured">Featured</option>
+                <option value="price-asc">Price: low to high</option>
+                <option value="price-desc">Price: high to low</option>
+                <option value="name">Name: A to Z</option>
+              </select>
+            </div>
+          </div>
+          <div class="active-filters" id="activeFilters"></div>
+          <div class="row g-4" id="menuGrid"></div>
+          <div class="empty-state d-none" id="menuEmpty">
+            <h3>No items match your filters</h3>
+            <p>Try removing a filter or searching for something else.</p>
+            <button type="button" class="btn btn-rose" id="menuEmptyReset">Reset filters</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================================== OFFERS =================================== -->
+  <section class="page" id="page-offers" data-title="Offers">
+    <div class="page-hero">
+      <div class="container">
+        <h1>Offers &amp; Deals</h1>
+        <p>Copy a code and enter it in your cart to save. Conditions are listed with each offer.</p>
+      </div>
+    </div>
+    <div class="container section pt-4">
+      <div class="row g-4" id="offersGrid"></div>
+    </div>
+  </section>
+
+  <!-- =================================== MERCHANDISE =================================== -->
+  <section class="page" id="page-merchandise" data-title="Merchandise">
+    <div class="page-hero page-hero-mint">
+      <div class="container">
+        <h1>Merchandise</h1>
+        <p>Bakerz Bite branded mugs, bags, glasses and trays — take a bite of the café home.</p>
+      </div>
+    </div>
+    <div class="container section pt-4">
+      <div class="pill-filter" id="merchFilter" role="group" aria-label="Filter merchandise"></div>
+      <div class="row g-4" id="merchGrid"></div>
+    </div>
+  </section>
+
+  <!-- =================================== GALLERY =================================== -->
+  <section class="page" id="page-gallery" data-title="Gallery">
+    <div class="page-hero">
+      <div class="container">
+        <h1>Gallery</h1>
+        <p>A look inside our café, our kitchen and the treats we bake every day.</p>
+      </div>
+    </div>
+    <div class="container section pt-4">
+      <div class="pill-filter" id="galleryFilter" role="group" aria-label="Filter gallery"></div>
+      <div class="gallery-grid" id="galleryGrid"></div>
+    </div>
+  </section>
+
+  <!-- =================================== ABOUT =================================== -->
+  <section class="page" id="page-about" data-title="About Us">
+    <div class="page-hero">
+      <div class="container">
+        <h1>About Us</h1>
+        <p>A reputable bakery &amp; café, passionately baking with the finest ingredients.</p>
+      </div>
+    </div>
+
+    <!-- Our story -->
+    <div class="container section pb-3">
+      <div class="row g-5 align-items-center">
+        <div class="col-lg-5">
+          <div class="about-photo">
+            <img src="images/banners/about-baker.jpg" alt="Baker kneading dough by hand">
+            <span class="about-badge"><small>Since</small><strong>2015</strong></span>
+            <span class="about-chip">Baked fresh daily</span>
+          </div>
+        </div>
+        <div class="col-lg-7">
+          <div class="about-copy">
+            <p class="kicker">Our story</p>
+            <h2>Baked with passion since 2015</h2>
+            <p>Since its launch, <strong>Bakerz Bite</strong> has grown into a reputable bakery &amp; café specialising in baked goods, passionately made from the finest ingredients.</p>
+            <p>We offer a wide range of baked goods made fresh in-store every day — more than 300 different kinds, including artisan pastries, gourmet cakes and desserts, and handcrafted beverages.</p>
+            <p>We take pride in sourcing and using carefully selected ingredients, and we promise freshness and quality to every customer. We only use real butter, cream and unbleached flour. We treat our customers as our family and will never use an ingredient we would not feed our own.</p>
+            <blockquote class="motto-quote">Our motto: <span>Where smiles are served daily.</span></blockquote>
+            <div class="d-flex flex-wrap gap-2 mt-3">
+              <a href="#menu" class="btn btn-rose">Explore our menu</a>
+              <a href="#contact" class="btn btn-outline-rose">Contact us</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Highlights -->
+    <div class="container pb-4">
+      <div class="row g-4" id="aboutValues">
+        <div class="col-sm-6 col-lg-3">
+          <div class="value-card">
+            <span class="v-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/></svg></span>
+            <h3><span class="count-up" data-count="300">300</span>+</h3>
+            <p>kinds of baked goods made fresh in-store</p>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+          <div class="value-card">
+            <span class="v-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-4.5-9-9a5 5 0 019-3 5 5 0 019 3c-2 4.5-9 9-9 9z"/></svg></span>
+            <h3>Real</h3>
+            <p>butter, cream and unbleached flour — nothing artificial</p>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+          <div class="value-card">
+            <span class="v-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></span>
+            <h3>Daily</h3>
+            <p>baking every morning, so everything is fresh</p>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+          <div class="value-card">
+            <span class="v-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5z"/></svg></span>
+            <h3>Always</h3>
+            <p>innovating with new flavours across all our stores</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Our promise -->
+    <div class="section section-pink about-promise">
+      <div class="container">
+        <div class="section-head">
+          <div><p class="kicker">What we stand for</p><h2>Our Promise to You</h2></div>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="ap-card">
+              <span class="ap-num">01</span>
+              <h3>Fresh in-store</h3>
+              <p>Everything is baked fresh in our store every day, so what reaches your table is always at its best.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="ap-card">
+              <span class="ap-num">02</span>
+              <h3>Finest ingredients</h3>
+              <p>We carefully select our ingredients and only use real butter, cream and unbleached flour.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="ap-card">
+              <span class="ap-num">03</span>
+              <h3>Like family</h3>
+              <p>We treat our customers as our family and never use an ingredient we would not feed our own.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="container section">
+      <div class="about-cta">
+        <h2>Ready to taste the difference?</h2>
+        <p>Come visit us or order your favourites online — we cannot wait to serve you a smile.</p>
+        <div class="d-flex flex-wrap justify-content-center gap-2">
+          <a href="#menu" class="btn btn-rose btn-lg">Order now</a>
+          <a href="#contact" class="btn btn-glass btn-lg">Visit us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================================== CONTACT =================================== -->
+  <section class="page" id="page-contact" data-title="Contact Us">
+    <div class="page-hero page-hero-mint">
+      <div class="container">
+        <h1>Contact Us</h1>
+        <p>Questions, custom orders or catering? We would love to hear from you.</p>
+      </div>
+    </div>
+    <div class="container section pt-4">
+      <div class="row g-4" id="contactCards"></div>
+      <div class="row g-4 mt-1">
+        <div class="col-lg-6">
+          <form class="form-card" id="contactForm" novalidate>
+            <h2 class="h4 mb-3">Send us a message</h2>
+            <div class="mb-3">
+              <label for="cName" class="form-label">Your name</label>
+              <input type="text" class="form-control" id="cName" required minlength="2">
+              <div class="invalid-feedback">Please enter your name.</div>
+            </div>
+            <div class="mb-3">
+              <label for="cEmail" class="form-label">Email</label>
+              <input type="email" class="form-control" id="cEmail" required>
+              <div class="invalid-feedback">Please enter a valid email address.</div>
+            </div>
+            <div class="mb-3">
+              <label for="cSubject" class="form-label">Subject</label>
+              <select class="form-select" id="cSubject">
+                <option>General question</option>
+                <option>Custom cake order</option>
+                <option>Catering &amp; events</option>
+                <option>Feedback</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="cMessage" class="form-label">Message</label>
+              <textarea class="form-control" id="cMessage" rows="4" required minlength="10"></textarea>
+              <div class="invalid-feedback">Please write at least 10 characters.</div>
+            </div>
+            <button type="submit" class="btn btn-rose">Send message</button>
+            <div class="alert alert-soft mt-3 d-none" id="contactSuccess" role="status"></div>
+          </form>
+        </div>
+        <div class="col-lg-6">
+          <div class="map-card">
+            <iframe title="Map showing Bakerz Bite, DHA Phase 6, Karachi" loading="lazy" src="https://maps.google.com/maps?q=Khayaban-e-Ittehad%20DHA%20Phase%206%20Karachi&amp;z=14&amp;output=embed"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================================== FEEDBACK =================================== -->
+  <section class="page" id="page-feedback" data-title="Feedback &amp; Ratings">
+    <div class="page-hero">
+      <div class="container">
+        <h1>Feedback &amp; Ratings</h1>
+        <p>Tell us how we did. Your rating and review appear below right away.</p>
+      </div>
+    </div>
+    <div class="container section pt-4">
+      <div class="row g-4">
+        <div class="col-lg-5">
+          <form class="form-card" id="feedbackForm" novalidate>
+            <h2 class="h4 mb-3">Rate &amp; review</h2>
+            <fieldset class="mb-3">
+              <legend class="form-label mb-1">Your rating</legend>
+              <div class="star-input" id="starInput">
+                <input type="radio" name="rating" id="star5" value="5"><label for="star5" title="5 stars — Excellent"><span class="visually-hidden">5 stars</span>★</label>
+                <input type="radio" name="rating" id="star4" value="4"><label for="star4" title="4 stars — Very good"><span class="visually-hidden">4 stars</span>★</label>
+                <input type="radio" name="rating" id="star3" value="3"><label for="star3" title="3 stars — Good"><span class="visually-hidden">3 stars</span>★</label>
+                <input type="radio" name="rating" id="star2" value="2"><label for="star2" title="2 stars — Fair"><span class="visually-hidden">2 stars</span>★</label>
+                <input type="radio" name="rating" id="star1" value="1"><label for="star1" title="1 star — Poor"><span class="visually-hidden">1 star</span>★</label>
+              </div>
+              <div class="small text-rose fw-bold" id="starText" aria-live="polite">Select a rating</div>
+              <div class="invalid-feedback d-block d-none" id="starError">Please choose a rating.</div>
+            </fieldset>
+            <div class="mb-3">
+              <label for="fbName" class="form-label">Your name</label>
+              <input type="text" class="form-control" id="fbName" required minlength="2">
+              <div class="invalid-feedback">Please enter your name.</div>
+            </div>
+            <div class="mb-3">
+              <label for="fbItem" class="form-label">What are you reviewing?</label>
+              <select class="form-select" id="fbItem"></select>
+            </div>
+            <div class="mb-3">
+              <label for="fbComment" class="form-label">Your review</label>
+              <textarea class="form-control" id="fbComment" rows="4" required minlength="10" maxlength="500"></textarea>
+              <div class="invalid-feedback">Please write at least 10 characters.</div>
+            </div>
+            <button type="submit" class="btn btn-rose w-100">Submit review</button>
+          </form>
+        </div>
+        <div class="col-lg-7">
+          <div class="rating-summary" id="ratingSummary"></div>
+          <div class="d-flex justify-content-between align-items-center my-3 gap-2 flex-wrap">
+            <h2 class="h4 mb-0">Customer reviews</h2>
+            <select class="form-select form-select-sm w-auto" id="reviewSort" aria-label="Sort reviews">
+              <option value="new">Newest first</option>
+              <option value="high">Highest rating</option>
+              <option value="low">Lowest rating</option>
+            </select>
+          </div>
+          <div id="reviewList"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================================== FAQ =================================== -->
+  <section class="page" id="page-faq" data-title="FAQ">
+    <div class="page-hero page-hero-mint">
+      <div class="container">
+        <h1>Frequently Asked Questions</h1>
+        <p>Delivery, custom cakes, ingredients, payments and more.</p>
+      </div>
+    </div>
+    <div class="container section pt-4 narrow">
+      <label for="faqSearch" class="visually-hidden">Search questions</label>
+      <input type="search" class="form-control form-control-lg mb-4" id="faqSearch" placeholder="Search questions…">
+      <div class="accordion" id="faqList"></div>
+      <p class="empty-state d-none" id="faqEmpty">No questions match your search.</p>
+    </div>
+  </section>
+
+  <!-- =================================== SITE MAP =================================== -->
+  <section class="page" id="page-sitemap" data-title="Site Map">
+    <div class="page-hero">
+      <div class="container">
+        <h1>Site Map</h1>
+        <p>Every page and section of the Bakerz Bite website. This page is built from <a href="sitemap.xml" target="_blank" rel="noopener">sitemap.xml</a>.</p>
+      </div>
+    </div>
+    <div class="container section pt-4">
+      <div class="row g-4" id="sitemapTree"></div>
+    </div>
+  </section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4">
+        <a class="footer-brand" href="#home"><img src="images/logo.svg" alt="" width="44" height="44"> Bakerz Bite</a>
+        <p class="mt-2 mb-0">Bakery &amp; café. <em>Where smiles are served daily.</em></p>
+      </div>
+      <div class="col-6 col-md-3 col-lg-2">
+        <h2 class="footer-title">Explore</h2>
+        <ul class="footer-links">
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#offers">Offers</a></li>
+          <li><a href="#merchandise">Merchandise</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md-3 col-lg-2">
+        <h2 class="footer-title">Company</h2>
+        <ul class="footer-links">
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#feedback">Feedback</a></li>
+          <li><a href="#sitemap">Site Map</a></li>
+        </ul>
+      </div>
+      <div class="col-md-12 col-lg-4">
+        <h2 class="footer-title">Visit us</h2>
+        <address class="mb-0" id="footerContact"></address>
+      </div>
+    </div>
+    <div class="social" aria-label="Social media">
+      <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+      </a>
+      <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v7h4v-7h3l1-4h-4V8z"/></svg>
+      </a>
+      <a href="https://twitter.com/" target="_blank" rel="noopener" aria-label="Twitter">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 5.9c-.7.3-1.5.5-2.4.6.9-.5 1.5-1.3 1.8-2.3-.8.5-1.7.8-2.6 1a4.1 4.1 0 0 0-7 3.7C8.4 8.7 5.4 7 3.4 4.5c-1.1 1.9-.5 4.2 1.3 5.4-.7 0-1.300-.2-1.9-.5 0 2 1.4 3.7 3.3 4.1-.6.2-1.2.2-1.8.1.5 1.6 2 2.8 3.8 2.9A8.3 8.3 0 0 1 2 18.3 11.6 11.6 0 0 0 8.3 20c7.5 0 11.7-6.4 11.4-12.1.8-.6 1.5-1.3 2.3-2z"/></svg>
+      </a>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Bakerz Bite. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ BOTTOM TICKER: date, time, location ============ -->
+<div class="ticker" role="region" aria-label="Live date, time and location">
+  <span class="ticker-label">LIVE</span>
+  <div class="ticker-window">
+    <div class="ticker-track" id="tickerTrack"></div>
+  </div>
+</div>
+
+<!-- ============ PRODUCT DETAILS POP-UP ============ -->
+<div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="pmTitle" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title h4" id="pmTitle">Product</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row g-4">
+          <div class="col-lg-6">
+            <div id="pmCarousel" class="carousel slide pm-carousel">
+              <div class="carousel-inner" id="pmSlides"></div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#pmCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Previous image</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#pmCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Next image</span>
+              </button>
+            </div>
+            <div class="pm-thumbs" id="pmThumbs"></div>
+          </div>
+          <div class="col-lg-6">
+            <div class="d-flex flex-wrap gap-2 mb-2" id="pmBadges"></div>
+            <p class="pm-price" id="pmPrice"></p>
+            <p id="pmDesc"></p>
+            <h3 class="pm-subtitle" id="pmListTitle">Ingredients</h3>
+            <ul class="pm-ingredients" id="pmIngredients"></ul>
+            <h3 class="pm-subtitle">Specifications</h3>
+            <table class="table table-sm pm-specs"><tbody id="pmSpecs"></tbody></table>
+            <div class="d-flex align-items-center gap-3 flex-wrap mt-3">
+              <div class="qty" role="group" aria-label="Quantity">
+                <button type="button" class="qty-btn" id="pmMinus" aria-label="Decrease quantity">−</button>
+                <span id="pmQty" aria-live="polite">1</span>
+                <button type="button" class="qty-btn" id="pmPlus" aria-label="Increase quantity">+</button>
+              </div>
+              <button type="button" class="btn btn-rose btn-lg flex-grow-1" id="pmAdd">Add to cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ GALLERY LIGHTBOX ============ -->
+<div class="modal fade" id="lightbox" tabindex="-1" aria-labelledby="lbTitle" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content lightbox-content">
+      <div class="modal-header border-0">
+        <h2 class="modal-title h5" id="lbTitle"></h2>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center position-relative">
+        <img id="lbImage" src="" alt="" class="img-fluid">
+        <button type="button" class="lb-nav lb-prev" id="lbPrev" aria-label="Previous photo">‹</button>
+        <button type="button" class="lb-nav lb-next" id="lbNext" aria-label="Next photo">›</button>
+        <p class="lb-counter" id="lbCounter"></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ CART (slide-in panel) ============ -->
+<div class="offcanvas offcanvas-end cart-panel" tabindex="-1" id="cartPanel" aria-labelledby="cartTitle">
+  <div class="offcanvas-header">
+    <h2 class="offcanvas-title h4" id="cartTitle">Your Sweet Box</h2>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close cart"></button>
+  </div>
+  <div class="offcanvas-body" id="cartBody"></div>
+</div>
+
+<!-- ============ TOASTS ============ -->
+<div class="toast-container position-fixed toast-pos">
+  <div id="toast" class="toast align-items-center" role="status" aria-live="polite" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body" id="toastText"></div>
+      <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+  </div>
+</div>
+
+<!-- jQuery and Bootstrap from CDN, with local copies as fallback when offline -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>window.jQuery || document.write('<script src="vendor/jquery/jquery.min.js"><\/script>');</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>window.bootstrap || document.write('<script src="vendor/bootstrap/bootstrap.bundle.min.js"><\/script>');</script>
+<!-- Data: the app reads data/*.json and sitemap.xml; js/data.js is a copy used when the page is opened from disk -->
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+<script src="js/bill.js"></script>
+
+<script>
+/* ---------- 1) Cake video: har page ke hero mein shift hoti hai ---------- */
+(function () {
+  var v = document.getElementById('heroVideo');
+  var app = document.getElementById('app');
+  if (!v || !app) return;
+  function place() {
+    var host = app.querySelector('.page.active .banner, .page.active .page-hero');
+    if (host && v.parentNode !== host) {
+      host.insertBefore(v, host.firstChild);
+      var p = v.play();
+      if (p && p.catch) p.catch(function () {});
+    }
+  }
+  place();
+  new MutationObserver(place).observe(app, { subtree: true, attributes: true, attributeFilter: ['class'] });
+  window.addEventListener('hashchange', function () { setTimeout(place, 60); });
+  window.addEventListener('load', place);
+})();
+
+/* ---------- 2) Menu se "Vegetable Samosa" hatana ----------
+   Hamesha ke liye hatane ke liye js/data.js (aur data/ ki json) se bhi is item ka block delete kar do. */
+(function () {
+  var app = document.getElementById('app');
+  if (!app) return;
+  var re = /(veg(etable)?\s*samosa|samosa[^a-z]*(veg|vegetable))/i;
+  function clean() {
+    var removed = 0;
+    app.querySelectorAll('.p-card').forEach(function (card) {
+      var n = card.querySelector('.p-name') || card;
+      if (re.test(n.textContent)) {
+        var col = card.closest('[class*="col"]') || card;
+        col.remove();
+        removed++;
+      }
+    });
+    if (removed) {
+      var rc = document.getElementById('resultCount');
+      if (rc) rc.textContent = rc.textContent.replace(/\d+/, function (m) { return Math.max(0, parseInt(m, 10) - removed); });
+    }
+  }
+  clean();
+  new MutationObserver(clean).observe(app, { childList: true, subtree: true });
+})();
+
+/* ---------- 3) About page: numbers count-up ---------- */
+(function () {
+  var els = document.querySelectorAll('.count-up[data-count]');
+  if (!els.length) return;
+  function run(el) {
+    var target = parseInt(el.getAttribute('data-count'), 10) || 0;
+    var dur = 1400, t0 = null;
+    function step(ts) {
+      if (!t0) t0 = ts;
+      var p = Math.min((ts - t0) / dur, 1);
+      el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3)));
+      if (p < 1) requestAnimationFrame(step);
+    }
+    el.textContent = '0';
+    requestAnimationFrame(step);
+  }
+  if (!('IntersectionObserver' in window)) return;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { run(e.target); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.4 });
+  els.forEach(function (el) { io.observe(el); });
+})();
+
+/* ---------- 4) WhatsApp icon: "WhatsApp" ki jagah icon ---------- */
+(function () {
+  var ICON = '<svg class="wa-icon" width="18" height="18" viewBox="0 0 24 24" fill="#B0315C" role="img" aria-label="WhatsApp" style="vertical-align:-3px;margin:0 4px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.030-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.870 9.870 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.860 9.860 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>';
+  function swap() {
+    document.querySelectorAll('.wa-here:empty').forEach(function (el) { el.innerHTML = ICON; });
+    ['contactCards', 'footerContact'].forEach(function (id) {
+      var box = document.getElementById(id);
+      if (!box) return;
+      var walker = document.createTreeWalker(box, NodeFilter.SHOW_TEXT);
+      var found = [], n;
+      while ((n = walker.nextNode())) { if (/WhatsApp\s*:/i.test(n.nodeValue)) found.push(n); }
+      found.forEach(function (t) {
+        var span = document.createElement('span');
+        span.innerHTML = t.nodeValue.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/WhatsApp\s*:\s*/gi, ICON);
+        t.parentNode.replaceChild(span, t);
+      });
+    });
+  }
+  swap();
+  new MutationObserver(swap).observe(document.body, { childList: true, subtree: true });
+})();
+</script>
+</body>
+</html>

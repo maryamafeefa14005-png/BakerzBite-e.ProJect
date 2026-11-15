@@ -1,0 +1,134 @@
+[
+  {
+    "id": "mug-classic",
+    "name": "Bakerz Bite Classic Mug",
+    "type": "Mugs",
+    "price": 1200,
+    "description": "Glossy white ceramic mug with our rose cupcake logo — made for your morning chai.",
+    "specs": {
+      "Material": "Ceramic",
+      "Capacity": "350 ml",
+      "Height": "9.5 cm",
+      "Care": "Dishwasher and microwave safe"
+    },
+    "tags": [
+      "Bestseller"
+    ],
+    "images": [
+      "images/merch/mug-classic-1.jpg",
+      "images/merch/mug-classic-2.jpg"
+    ]
+  },
+  {
+    "id": "mug-pair",
+    "name": "Couple Mug Set",
+    "type": "Mugs",
+    "price": 2100,
+    "description": "Two matching branded mugs — a sweet gift for two.",
+    "specs": {
+      "Material": "Ceramic",
+      "Capacity": "350 ml each",
+      "In the box": "2 mugs, gift box",
+      "Care": "Dishwasher and microwave safe"
+    },
+    "tags": [],
+    "images": [
+      "images/merch/mug-pair-1.jpg",
+      "images/merch/mug-pair-2.jpg"
+    ]
+  },
+  {
+    "id": "tote-cream",
+    "name": "Cream Canvas Tote Bag",
+    "type": "Bags",
+    "price": 1500,
+    "description": "Sturdy cotton tote for your bakery runs and everyday errands.",
+    "specs": {
+      "Material": "100% cotton canvas, 12 oz",
+      "Size": "38 × 42 cm",
+      "Handle drop": "30 cm",
+      "Load": "Up to 10 kg"
+    },
+    "tags": [],
+    "images": [
+      "images/merch/tote-cream-1.jpg",
+      "images/merch/tote-cream-2.jpg"
+    ]
+  },
+  {
+    "id": "tote-black",
+    "name": "Black Canvas Tote Bag",
+    "type": "Bags",
+    "price": 1500,
+    "description": "Our classic tote in black with a white printed logo.",
+    "specs": {
+      "Material": "100% cotton canvas, 12 oz",
+      "Size": "38 × 42 cm",
+      "Handle drop": "30 cm",
+      "Load": "Up to 10 kg"
+    },
+    "tags": [
+      "New"
+    ],
+    "images": [
+      "images/merch/tote-black-1.jpg",
+      "images/merch/tote-black-2.jpg"
+    ]
+  },
+  {
+    "id": "glass-tumbler",
+    "name": "Branded Tumbler Glass",
+    "type": "Glasses",
+    "price": 900,
+    "description": "Clear tumbler for iced coffee and shakes, printed with our logo.",
+    "specs": {
+      "Material": "Lead-free glass",
+      "Capacity": "300 ml",
+      "Print": "Food-safe ceramic ink",
+      "Care": "Hand wash recommended"
+    },
+    "tags": [],
+    "images": [
+      "images/merch/glass-tumbler-1.jpg",
+      "images/merch/glass-tumbler-2.jpg"
+    ]
+  },
+  {
+    "id": "glass-set",
+    "name": "Drinking Glass Set",
+    "type": "Glasses",
+    "price": 1600,
+    "description": "A pair of tall drinking glasses with the Bakerz Bite logo.",
+    "specs": {
+      "Material": "Lead-free glass",
+      "Capacity": "330 ml each",
+      "In the box": "2 glasses",
+      "Care": "Dishwasher safe"
+    },
+    "tags": [],
+    "images": [
+      "images/merch/glass-set-1.jpg",
+      "images/merch/glass-set-2.jpg"
+    ]
+  },
+  {
+    "id": "tray-wooden",
+    "name": "Wooden Serving Tray",
+    "type": "Trays",
+    "price": 2800,
+    "description": "Handcrafted acacia wood serving tray with a laser-engraved logo — perfect for cakes and breads.",
+    "specs": {
+      "Material": "Acacia wood, food-safe oil finish",
+      "Size": "40 × 22 cm",
+      "Engraving": "Laser-engraved logo",
+      "Care": "Wipe clean, oil monthly"
+    },
+    "tags": [
+      "Chef's pick"
+    ],
+    "images": [
+      "images/merch/tray-wooden-1.jpg",
+      "images/merch/tray-wooden-2.jpg"
+    ]
+  }
+]

@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Hira Siddiqui",
+    "rating": 5,
+    "item": "Rainbow Birthday Cake",
+    "date": "2026-10-12",
+    "comment": "The rainbow cake for my daughter's birthday was so pretty we didn't want to cut it!"
+  },
+  {
+    "name": "Usman Ali",
+    "rating": 5,
+    "item": "Chocolate Truffle Cake",
+    "date": "2026-10-20",
+    "comment": "The truffle cake is next level. Ordered twice in one week, no regrets."
+  },
+  {
+    "name": "Mahnoor Fatima",
+    "rating": 4,
+    "item": "Funfetti Cupcakes",
+    "date": "2026-10-25",
+    "comment": "Cupcakes looked exactly like the picture and tasted amazing. Delivery was a little late."
+  },
+  {
+    "name": "Bilal Ahmed",
+    "rating": 5,
+    "item": "Butter Croissant",
+    "date": "2026-10-29",
+    "comment": "Flaky, buttery croissants and a great cappuccino. My new weekend spot."
+  }
+]

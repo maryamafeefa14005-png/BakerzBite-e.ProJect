@@ -1,0 +1,37 @@
+{
+  "name": "Bakerz Bite",
+  "motto": "Where smiles are served daily.",
+  "since": 2015,
+  "email": "hello@bakerzbite.pk",
+  "phone": "021-35341234",
+  "whatsapp": "923217654321",
+  "whatsappDisplay": "0321-7654321",
+  "address": [
+    "Shop 4, Khayaban-e-Ittehad",
+    "DHA Phase 6, Karachi"
+  ],
+  "hours": [
+    "Mon – Sun: 8:00 am – 12:00 am",
+    "Custom cake orders: 24 hours notice"
+  ],
+  "social": {
+    "Instagram": "#",
+    "Facebook": "#",
+    "TikTok": "#"
+  },
+  "freeDeliveryOver": 3000,
+  "deliveryFee": 200,
+  "categories": [
+    "Cakes",
+    "Cupcakes",
+    "Pastries",
+    "Cookies",
+    "Pies",
+    "Cheesecakes",
+    "Brownies",
+    "Donuts",
+    "Breads",
+    "Savoury",
+    "Beverages"
+  ]
+}

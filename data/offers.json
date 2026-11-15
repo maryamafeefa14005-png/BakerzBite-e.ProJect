@@ -1,0 +1,126 @@
+[
+  {
+    "id": "welcome",
+    "title": "Sweet Start",
+    "badge": "15% OFF",
+    "image": "images/products/cake-rainbow-1.jpg",
+    "description": "15% off your first online order of Rs. 2,000 or more.",
+    "details": [
+      "Valid on all bakery items and beverages",
+      "Minimum order Rs. 2,000",
+      "One use per customer"
+    ],
+    "code": "WELCOME15",
+    "validTill": "31 Dec 2026",
+    "discount": {
+      "type": "percent",
+      "value": 15,
+      "minOrder": 2000
+    }
+  },
+  {
+    "id": "cupcake",
+    "title": "Cupcake Wednesday",
+    "badge": "20% OFF",
+    "image": "images/products/cup-funfetti-1.jpg",
+    "description": "Every Wednesday, all cupcake boxes are 20% off.",
+    "details": [
+      "Applies to the Cupcakes category only",
+      "Valid on Wednesdays",
+      "No minimum order"
+    ],
+    "code": "CUPCAKE20",
+    "validTill": "31 Dec 2026",
+    "category": "Cupcakes",
+    "discount": {
+      "type": "percent",
+      "value": 20,
+      "category": "Cupcakes",
+      "days": [
+        3
+      ]
+    }
+  },
+  {
+    "id": "pie",
+    "title": "Pie Weekend",
+    "badge": "10% OFF",
+    "image": "images/products/pie-apple-1.jpg",
+    "description": "Saturdays and Sundays: 10% off every whole pie and tart.",
+    "details": [
+      "Applies to the Pies category only",
+      "Valid on Saturday and Sunday",
+      "Pre-order a day ahead for pickup"
+    ],
+    "code": "PIE10",
+    "validTill": "31 Dec 2026",
+    "category": "Pies",
+    "discount": {
+      "type": "percent",
+      "value": 10,
+      "category": "Pies",
+      "days": [
+        6,
+        0
+      ]
+    }
+  },
+  {
+    "id": "birthday",
+    "title": "Birthday Cake Deal",
+    "badge": "10% OFF",
+    "image": "images/products/cake-truffle-1.jpg",
+    "description": "Celebrating? Get 10% off any 2 lb cake.",
+    "details": [
+      "Applies to the Cakes category only",
+      "Order 24 hours in advance",
+      "Free message on the cake"
+    ],
+    "code": "BDAY10",
+    "validTill": "31 Dec 2026",
+    "category": "Cakes",
+    "discount": {
+      "type": "percent",
+      "value": 10,
+      "category": "Cakes"
+    }
+  },
+  {
+    "id": "merch",
+    "title": "Merch Bundle",
+    "badge": "25% OFF",
+    "image": "images/merch/mug-classic-1.jpg",
+    "description": "25% off Bakerz Bite merchandise when your order is Rs. 5,000 or more.",
+    "details": [
+      "Applies to mugs, bags, glasses and trays",
+      "Minimum order Rs. 5,000",
+      "While stocks last"
+    ],
+    "code": "MERCH25",
+    "validTill": "31 Jan 2027",
+    "category": "Merchandise",
+    "discount": {
+      "type": "percent",
+      "value": 25,
+      "category": "Merchandise",
+      "minOrder": 5000
+    }
+  },
+  {
+    "id": "delivery",
+    "title": "Free Home Delivery",
+    "badge": "FREE",
+    "image": "images/banners/banner-cookies.jpg",
+    "description": "Free delivery anywhere in Karachi on orders of Rs. 3,000 or more.",
+    "details": [
+      "Applied automatically at checkout — no code needed",
+      "Below Rs. 3,000 a Rs. 200 delivery fee applies",
+      "Same-day delivery on orders before 6 pm"
+    ],
+    "code": "",
+    "validTill": "Ongoing",
+    "discount": {
+      "type": "auto"
+    }
+  }
+]

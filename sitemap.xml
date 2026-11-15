@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Bakerz Bite site map.
+  The website is a single-page application, so every page is a section of
+  index.html reached by a #hash link. The Sitemap page of the website is
+  built by reading this file.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:bb="https://bakerzbite.pk/schema/sitemap">
+  <url>
+    <loc>index.html#home</loc>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <bb:title>Home</bb:title>
+    <bb:group>Main</bb:group>
+    <bb:section>Banner</bb:section>
+    <bb:section>Shop by Category</bb:section>
+    <bb:section>Best Sellers</bb:section>
+    <bb:section>Current Offers</bb:section>
+    <bb:section>Customer Reviews</bb:section>
+  </url>
+  <url>
+    <loc>index.html#menu</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+    <bb:title>Menu</bb:title>
+    <bb:group>Main</bb:group>
+    <bb:section>Cakes</bb:section>
+    <bb:section>Cupcakes</bb:section>
+    <bb:section>Pastries</bb:section>
+    <bb:section>Cookies</bb:section>
+    <bb:section>Pies</bb:section>
+    <bb:section>Cheesecakes</bb:section>
+    <bb:section>Brownies</bb:section>
+    <bb:section>Donuts</bb:section>
+    <bb:section>Breads</bb:section>
+    <bb:section>Savoury</bb:section>
+    <bb:section>Beverages</bb:section>
+  </url>
+  <url>
+    <loc>index.html#offers</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <bb:title>Offers</bb:title>
+    <bb:group>Main</bb:group>
+  </url>
+  <url>
+    <loc>index.html#merchandise</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <bb:title>Merchandise</bb:title>
+    <bb:group>Main</bb:group>
+    <bb:section>Mugs</bb:section>
+    <bb:section>Bags</bb:section>
+    <bb:section>Glasses</bb:section>
+    <bb:section>Trays</bb:section>
+  </url>
+  <url>
+    <loc>index.html#gallery</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <bb:title>Gallery</bb:title>
+    <bb:group>Main</bb:group>
+    <bb:section>Our Café</bb:section>
+    <bb:section>Behind the Scenes</bb:section>
+    <bb:section>Our Creations</bb:section>
+  </url>
+  <url>
+    <loc>index.html#about</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <bb:title>About Us</bb:title>
+    <bb:group>Company</bb:group>
+  </url>
+  <url>
+    <loc>index.html#contact</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <bb:title>Contact Us</bb:title>
+    <bb:group>Company</bb:group>
+  </url>
+  <url>
+    <loc>index.html#feedback</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <bb:title>Feedback &amp; Ratings</bb:title>
+    <bb:group>Help</bb:group>
+  </url>
+  <url>
+    <loc>index.html#faq</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <bb:title>FAQ</bb:title>
+    <bb:group>Help</bb:group>
+  </url>
+  <url>
+    <loc>index.html#sitemap</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+    <bb:title>Site Map</bb:title>
+    <bb:group>Help</bb:group>
+  </url>
+</urlset>

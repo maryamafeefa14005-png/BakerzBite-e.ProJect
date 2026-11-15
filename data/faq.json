@@ -1,0 +1,42 @@
+[
+  {
+    "q": "Do you deliver, and how much does it cost?",
+    "a": "Yes, we deliver across Karachi. Delivery is free on orders of Rs. 3,000 or more; below that a Rs. 200 fee applies. Orders placed before 6 pm are delivered the same day."
+  },
+  {
+    "q": "How far in advance should I order a custom cake?",
+    "a": "Please order custom and birthday cakes at least 24 hours in advance. For tiered or wedding cakes, give us 3–5 days."
+  },
+  {
+    "q": "Do you have eggless options?",
+    "a": "Yes. Use the “Eggless” filter on the Menu page to see every eggless item, including our Pineapple Cream Cake, Nan Khatai and breads."
+  },
+  {
+    "q": "What ingredients do you use?",
+    "a": "We bake with real butter, fresh cream and unbleached flour, and we never use an ingredient we would not feed our own family. Every product lists its ingredients and allergens — click any item to see them."
+  },
+  {
+    "q": "How do I use a promo code?",
+    "a": "Add items to your cart, open the cart and type the code (for example WELCOME15) in the promo box, then press Apply. See the Offers page for current codes and conditions."
+  },
+  {
+    "q": "How do I pay?",
+    "a": "We accept cash on delivery, and card or bank transfer at the shop. Your order is confirmed on WhatsApp before we start baking."
+  },
+  {
+    "q": "Can I return or change an order?",
+    "a": "Fresh bakery items cannot be returned, but you can change or cancel an order up to 12 hours before delivery. Unused merchandise can be exchanged within 7 days."
+  },
+  {
+    "q": "Are your products halal?",
+    "a": "Yes, all our ingredients are halal certified, and we do not use gelatin in any of our desserts."
+  },
+  {
+    "q": "Do you cater for events and offices?",
+    "a": "Yes! We prepare dessert tables, tea-time platters and corporate boxes. Contact us with your date and guest count for a quote."
+  },
+  {
+    "q": "Where can I see the ingredients and allergens?",
+    "a": "Click on any product to open its details window. You will see photos, a description, the full ingredient list and the allergens."
+  }
+]

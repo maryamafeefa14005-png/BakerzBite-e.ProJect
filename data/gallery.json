@@ -1,0 +1,107 @@
+[
+  {
+    "src": "images/gallery/bakery-interior.jpg",
+    "title": "Our café counter",
+    "category": "Our Café"
+  },
+  {
+    "src": "images/gallery/cafe-counter.jpg",
+    "title": "Morning light at the café",
+    "category": "Our Café"
+  },
+  {
+    "src": "images/gallery/counter.jpg",
+    "title": "Pastry counter",
+    "category": "Our Café"
+  },
+  {
+    "src": "images/gallery/bakery-display.jpg",
+    "title": "Fresh from the oven",
+    "category": "Our Café"
+  },
+  {
+    "src": "images/gallery/fresh-shelves.jpg",
+    "title": "Shelves stocked every morning",
+    "category": "Our Café"
+  },
+  {
+    "src": "images/gallery/latte.jpg",
+    "title": "Latte art",
+    "category": "Our Café"
+  },
+  {
+    "src": "images/gallery/baker-cake.jpg",
+    "title": "Decorating a birthday cake",
+    "category": "Behind the Scenes"
+  },
+  {
+    "src": "images/gallery/kneading.jpg",
+    "title": "Kneading the dough by hand",
+    "category": "Behind the Scenes"
+  },
+  {
+    "src": "images/gallery/our-bakers.jpg",
+    "title": "Our bakers at work",
+    "category": "Behind the Scenes"
+  },
+  {
+    "src": "images/gallery/icing.jpg",
+    "title": "Piping the frosting",
+    "category": "Behind the Scenes"
+  },
+  {
+    "src": "images/gallery/cupcakes-rack.jpg",
+    "title": "Cupcakes cooling",
+    "category": "Behind the Scenes"
+  },
+  {
+    "src": "images/gallery/apron-green.jpg",
+    "title": "Cracking fresh eggs",
+    "category": "Behind the Scenes"
+  },
+  {
+    "src": "images/gallery/celebration-cake.jpg",
+    "title": "Celebration cake",
+    "category": "Our Creations"
+  },
+  {
+    "src": "images/gallery/cake-shelves.jpg",
+    "title": "Tarts and petit fours",
+    "category": "Our Creations"
+  },
+  {
+    "src": "images/gallery/cakes-case.jpg",
+    "title": "Cheesecakes and slices",
+    "category": "Our Creations"
+  },
+  {
+    "src": "images/gallery/french-pastries.jpg",
+    "title": "French pastries",
+    "category": "Our Creations"
+  },
+  {
+    "src": "images/gallery/pastry-showcase.jpg",
+    "title": "Dessert showcase",
+    "category": "Our Creations"
+  },
+  {
+    "src": "images/gallery/cookies-container.jpg",
+    "title": "Cookies and scones",
+    "category": "Our Creations"
+  },
+  {
+    "src": "images/gallery/tray-cupcakes.jpg",
+    "title": "Muffins by the tray",
+    "category": "Our Creations"
+  },
+  {
+    "src": "images/gallery/macarons2.jpg",
+    "title": "French macarons",
+    "category": "Our Creations"
+  },
+  {
+    "src": "images/gallery/croissants.jpg",
+    "title": "Butter croissants",
+    "category": "Our Creations"
+  }
+]
